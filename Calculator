@@ -1,0 +1,42 @@
+public class calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.println("Если хотите выйти, нажмите q");
+                System.out.println("Введите первое число: ");
+                int x = scanner.nextInt();
+                System.out.println("Введите второе число: ");
+                int y = scanner.nextInt();
+                System.out.println("Введите операцию +  - : или * ");
+                char c = scanner.next().charAt(0);
+                if (c == '+') {
+                    int result = x + y;
+                    System.out.println("Сумма чисел равна " + result);
+                } else if (c == '-') {
+                    int result = x - y;
+                    System.out.println("Разность чисел равна " + result);
+                } else if (c == '*') {
+                    int result = x * y;
+                    System.out.println("Произведение чисел равно " + result);
+                } else if (c == ':') {
+                    double result = ((double) x / (double) y);
+                    System.out.println("Число " + x + "деленное на" + y + "равно " + result);
+                } else {
+                    System.out.println("Вы ввели неверные данные");
+                    return;
+                }
+            } catch (InputMismatchException e) {
+                if (scanner.nextLine().equals("q")) {
+                    System.out.println("Вы вышли из калькулятора");
+                    return; // Выход из цикла при нажатии клавиши q
+                }
+                System.out.println("Ошибка ввода. Пожалуйста, введите числа.");
+                scanner.nextLine(); // Сбрасываем прочитанный некорректный ввод
+            } catch (Exception e) {
+                System.out.println("Ошибка вида: ");
+                e.printStackTrace();
+            }
+            }
+        }
+    }
